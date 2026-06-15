@@ -1,0 +1,145 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    --text-color: #ffffff;
+    --accent: #00ffcc;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #0b131a, #162633, #1c1424, #081a24);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+}
+
+/* Main Menu Styles */
+.menu-body {
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-container {
+    width: 600px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.account-status {
+    text-align: center;
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.google-login-btn {
+    border-color: #de4032 !color;
+    margin-top: 10px;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-card {
+    padding: 20px;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: 0.3s ease;
+}
+
+.menu-card:hover:not(.locked) {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.menu-card.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.launch-tag {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Workspace Layout */
+.sidebar {
+    width: 320px;
+    padding: 25px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+}
+
+.workspace {
+    flex-grow: 1;
+    margin: 20px 20px 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.brand text-align: center;
+h1 { font-size: 2rem; margin: 0; text-shadow: 0 0 10px var(--accent); letter-spacing: 1px;}
+.brand p { margin: 5px 0; font-size: 0.75rem; color: #888; letter-spacing: 2px;}
+.back-link { color: var(--accent); text-decoration: none; font-size: 0.85rem; display: inline-block; margin-top: 5px;}
+
+.scroll-controls { display: flex; flex-direction: column; gap: 15px; overflow-y: auto;}
+.control-group { display: flex; flex-direction: column; gap: 5px; }
+label { font-size: 0.8rem; text-transform: uppercase; color: #bbb;}
+
+input[type="range"] { -webkit-appearance: none; width: 100%; background: transparent; }
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%; background: #fff; box-shadow: 0 0 8px var(--accent); cursor: pointer; margin-top: -6px;
+}
+input[type="range"]::-webkit-slider-runnable-track { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+.glass-button {
+    background: rgba(255, 255, 255, 0.03); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; text-align: center; box-sizing: border-box; transition: 0.2s;
+}
+.glass-button:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
+
+input[type="file"] { display: none; }
+
+.canvas-container-box {
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.ai-btn {
+    background: linear-gradient(90deg, #ff00cc, #333399, #00ffcc); background-size: 200%; border: none; color: white; padding: 14px; border-radius: 10px; font-weight: bold; cursor: pointer; animation: flow 4s linear infinite;
+}
+@keyframes flow { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
