@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Editor | Workspace</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+</head>
+<body>
+
+    <div class="sidebar glass">
+        <div class="brand">
+            <h1>A Editor</h1>
+            <p>by A officials . org</p>
+            <a href="index.html" class="back-link">← Back to Menu</a>
+        </div>
+        
+        <label class="file-upload glass-button">
+            <input type="file" id="upload" accept="image/*">
+            📁 Add Image Layer
+        </label>
+
+        <button class="glass-button" id="addText">📝 Add Text Layer</button>
+
+        <div class="scroll-controls">
+            <div class="control-group">
+                <label>Layer Opacity</label>
+                <input type="range" id="opacity" min="0" max="100" value="100">
+            </div>
+            <div class="control-group">
+                <label>Layer Brightness</label>
+                <input type="range" id="brightness" min="-1" max="1" step="0.1" value="0">
+            </div>
+            <div class="control-group">
+                <label>Layer Blur</label>
+                <input type="range" id="blur" min="0" max="1" step="0.1" value="0">
+            </div>
+        </div>
+
+        <button class="ai-btn" id="aiMagic">✨ Run AI Image Core ✨</button>
+        <button id="download" class="glass-button">💾 Cloud Save / Export</button>
+    </div>
+
+    <div class="workspace glass">
+        <div class="canvas-container-box">
+            <canvas id="fCanvas"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
