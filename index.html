@@ -3,41 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A officials . org | Hub</title>
+    <title>A Officials | Secure Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="menu-body">
+<body>
 
-    <div class="menu-container glass">
-        <div class="brand">
-            <h1>A OFFICIALS</h1>
-            <p>Ecosystem Dashboard</p>
-        </div>
+    <!-- AUTHENTICATION SCREEN -->
+    <div id="authScreen" class="auth-wrapper">
+        <div class="auth-card glass">
+            <h2>A OFFICIALS</h2>
+            <p class="subtitle">Secure AI Portal Entry</p>
+            
+            <!-- Step 1: Email Input -->
+            <div id="authStep1" class="auth-step active">
+                <div class="input-group">
+                    <label>Enter Registered Email</label>
+                    <input type="email" id="userEmail" placeholder="name@domain.com">
+                </div>
+                <button class="action-btn neon-blue" onclick="sendVerification()">Generate Secure Link</button>
+            </div>
 
-        <div class="account-status" id="accountStatus">
-            <p>Status: 🔴 Guest Account (Local Storage Only)</p>
-            <button class="glass-button google-login-btn" onclick="connectGoogle()">🔑 Connect Google Account</button>
-        </div>
-
-        <div class="menu-options">
-            <a href="editor.html" class="menu-card glass">
-                <h3>A Editor Pro</h3>
-                <p>Launch the hyper-glass interactive image manipulator & layer editor.</p>
-                <span class="launch-tag">Launch Tool →</span>
-            </a>
-
-            <div class="menu-card glass locked">
-                <h3>AI Scripter Studio</h3>
-                <p>Automated code synthesis and script compilation node.</p>
-                <span class="launch-tag">Decrypting Soon...</span>
+            <!-- Step 2: Verification Code -->
+            <div id="authStep2" class="auth-step">
+                <p class="info-text">A temporary access key has been routed to your browser session.</p>
+                <div class="input-group">
+                    <label>Enter Verification Passcode</label>
+                    <input type="text" id="verifyCode" placeholder="EX: 7492">
+                </div>
+                <button class="action-btn neon-purple" onclick="verifyUser()">Verify Identity</button>
             </div>
         </div>
     </div>
 
-    <script>
-        function connectGoogle() {
-            alert("A Officials Secure Gateway:\nTo link live Google Accounts securely without risk of hacking, you must hook up your private Firebase config keys to the backend authentication node.");
-        }
-    </script>
+    <!-- MAIN APP DASHBOARD (Hidden until verified) -->
+    <div id="appDashboard" class="dashboard-wrapper dynamic-hide">
+        <div class="sidebar glass">
+            <div class="brand">
+                <h1>A Editor</h1>
+                <p>by A officials . org</p>
+                <span id="userBadge" class="user-badge">Guest Session</span>
+            </div>
+            
+            <div class="nav-menu">
+                <button class="nav-item active" onclick="switchTab('editor')">🎨 Visual Studio</button>
+                <button class="nav-item" onclick="switchTab('scripter')">🤖 AI Code Node</button>
+                <button class="nav-item logout-btn" onclick="logout()">🔒 Lock Session</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- TAB 1: VISUAL EDITOR -->
+            <div id="tabEditor" class="tab-panel active">
+                <div class="workspace-grid">
+                    <div class="canvas-zone glass">
+                        <div id="canvasWrapper" class="canvas-container">
+                            <canvas id="mainCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="controls-zone glass">
+                        <h3>Layer Configurations</h3>
+                        <label class="file-upload-btn neon-blue">
+                            <input type="file" id="imageLoader" accept="image/*">
+                            Import Media Asset
+                        </label>
+                        
+                        <div class="sliders-stack">
+                            <div class="slider-box">
+                                <label>Exposure Core</label>
+                                <input type="range" id="brightSlider" min="-100" max="100" value="0">
+                            </div>
+                            <div class="slider-box">
+                                <label>Contrast Matrix</label>
+                                <input type="range" id="contrastSlider" min="-100" max="100" value="0">
+                            </div>
+                            <div class="slider-box">
+                                <label>Chroma Saturation</label>
+                                <input type="range" id="saturateSlider" min="-100" max="100" value="0">
+                            </div>
+                        </div>
+
+                        <button class="action-btn neon-purple" onclick="triggerAiImage()">✨ Execute Neural Upscale</button>
+                        <button class="action-btn plain-glass" onclick="downloadCanvas()">Export Composite Output</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: AI SCRIPT COMPILER -->
+            <div id="tabScripter" class="tab-panel">
+                <div class="workspace-grid">
+                    <div class="controls-zone glass">
+                        <h3>AI Engine Directives</h3>
+                        <div class="input-group">
+                            <label>System Logic Prompt</label>
+                            <textarea id="aiPrompt" placeholder="Describe the application architecture you want compiled (e.g., 'A modern calculator app with dark mode logic')"></textarea>
+                        </div>
+                        <button class="action-btn neon-purple" onclick="compileAiScript()">⚡ Synthesize Script Array</button>
+                    </div>
+                    <div class="canvas-zone glass">
+                        <div class="code-terminal-header">
+                            <span>Compiled Production Stream</span>
+                            <button onclick="copyCodeOutput()">Copy Code</button>
+                        </div>
+                        <textarea id="codeOutput" readonly placeholder="Waiting for algorithmic structural input sequence..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
